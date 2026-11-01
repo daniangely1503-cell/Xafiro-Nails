@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="es-VE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xafiro Nails · Insumos de uñas en Venezuela</title>
+<meta name="description" content="Xafiro Nails: insumos profesionales de manicura en Venezuela. Gel polish, polygel, builder, tips y herramientas con envíos a todo el país.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== DATOS DEMO: precios, testimonios, dirección y horarios son ficticios ===== */
+:root{
+  /* Paleta tomada del logo Xafiro: azul zafiro → violeta → rosa */
+  --blue:#5a6fff; --violet:#6a4fd8; --pink:#e85fc2; --deep:#221b5a; --mist:#efeafd;
+  --cream:#fbfaff; --ink:#17142e; --muted:#6b6785; --line:rgba(35,28,92,.12);
+  --grad:linear-gradient(100deg,#5a6fff 0%,#a46ee0 55%,#f067c8 100%);
+  --wa:#1fa855;
+  --serif:"Fraunces", Georgia, serif; --sans:"Outfit", system-ui, sans-serif;
+  --radius:1.25rem;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.6;overflow-x:hidden}
+img,video,canvas,iframe{max-width:100%;height:auto;display:block}
+svg{max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(75rem,100% - 2rem);margin-inline:auto}
+.eyebrow{font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--violet)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:-.01em;overflow-wrap:break-word}
+h2{font-size:clamp(2.1rem,6vw,4.25rem)}
+h2 em,h1 em{font-style:italic;font-weight:400;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+section{padding-block:clamp(4rem,10vw,8rem)}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.5rem;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.sec-head p{max-width:30rem;color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.6em;border-radius:999px;font-weight:500;text-decoration:none;font-size:.95rem;border:0;transition:transform .3s,background .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 .6rem 1.6rem -0.8rem rgba(31,168,85,.8)}
+.btn-deep{background:var(--grad);color:#fff}
+.btn-line{border:1.5px solid currentColor;background:transparent}
+
+/* ===== Header ===== */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,box-shadow .4s}
+header.solid{background:rgba(251,250,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;min-height:4.5rem}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:clamp(3.2rem,8vw,4.25rem);width:auto}
+.nav ul{display:none;flex-wrap:wrap;gap:2rem;list-style:none}
+.nav ul a{text-decoration:none;font-size:.92rem;opacity:.8}
+.nav ul a:hover{opacity:1;color:var(--violet)}
+.nav .btn{padding:.65em 1.1em;font-size:.85rem}
+.nav .btn span{display:none}
+@media (min-width:37.5em){.nav .btn span{display:inline}}
+@media (min-width:56.25em){.nav ul{display:flex}}
+
+/* ===== Hero ===== */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:center;padding-top:6rem;padding-bottom:3rem;overflow:hidden;background:radial-gradient(60% 55% at 85% 15%,rgba(90,111,255,.16),transparent 70%),radial-gradient(50% 45% at 70% 95%,rgba(240,103,200,.14),transparent 70%),var(--cream)}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+.hero h1{font-size:clamp(2.8rem,10vw,6.5rem);color:var(--deep)}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .line span{display:inline-block;transform:translateY(105%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.12s}
+.hero h1 .line:nth-child(3) span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.hero p.lead{max-width:32rem;margin:1.4rem 0 2rem;font-size:clamp(1.02rem,1.6vw,1.2rem);color:var(--muted)}
+.hero .btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:2rem;font-size:.85rem;color:var(--muted)}
+.hero-badges span{display:flex;align-items:center;gap:.45em}
+.hero-badges span::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--pink)}
+.hero-visual{position:relative;width:min(100%,30rem);justify-self:center}
+.hero-visual .main{border-radius:12rem 12rem var(--radius) var(--radius);overflow:hidden;aspect-ratio:3/4;box-shadow:0 2rem 4rem -2rem rgba(35,28,92,.45)}
+.hero-visual .main img{width:100%;height:100%;object-fit:cover;scale:1.15;will-change:transform}
+.hero-visual .chip{position:absolute;background:#fff;border-radius:1rem;padding:.6rem .9rem;display:flex;align-items:center;gap:.6rem;font-size:.8rem;box-shadow:0 1rem 2rem -1rem rgba(23,20,46,.35);animation:float 6s ease-in-out infinite}
+.hero-visual .chip img{width:2.6rem;height:2.6rem;object-fit:cover;border-radius:.6rem}
+.hero-visual .chip b{display:block;font-size:.9rem}
+.hero-visual .c1{left:-.5rem;bottom:12%}
+.hero-visual .c2{right:-.5rem;top:10%;animation-delay:-3s}
+@keyframes float{50%{translate:0 -.6rem}}
+@media (min-width:56.25em){
+  .hero-grid{grid-template-columns:1.1fr .9fr}
+  .hero-visual .c1{left:-2.5rem}
+  .hero-visual .c2{right:-2rem}
+}
+
+/* ===== Marquee ===== */
+.marquee{background:var(--grad);color:#fff;overflow:hidden;padding-block:1rem;font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.5vw,1.6rem)}
+.marquee-track{display:flex;gap:2.5rem;width:max-content;animation:marq 30s linear infinite}
+.marquee-track span::after{content:"✦";margin-left:2.5rem;color:rgba(255,255,255,.75);font-style:normal}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ===== Colores (scroll horizontal fijado) ===== */
+.colors{padding:0;background:var(--mist)}
+.colors-pin{height:auto}
+.colors-sticky{padding-block:clamp(4rem,10vw,7rem);overflow:hidden}
+.colors-track{display:flex;gap:1rem;padding-inline:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.colors-track::-webkit-scrollbar{display:none}
+.swatch{flex:0 0 min(70vw,16rem);scroll-snap-align:center;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 1rem 2rem -1.4rem rgba(35,28,92,.5)}
+.swatch img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.swatch div{padding:.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.swatch b{font-family:var(--serif);font-size:1.1rem;font-weight:600}
+.swatch i{width:1.1rem;height:1.1rem;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.colors .hint{margin-top:1.25rem;font-size:.8rem;color:var(--muted);text-align:center}
+/* En escritorio el carrusel se mueve con el scroll vertical */
+@media (min-width:56.25em) and (prefers-reduced-motion:no-preference){
+  .colors-pin.js-pin{height:260vh}
+  .colors-pin.js-pin .colors-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  .colors-pin.js-pin .colors-track{overflow:visible;scroll-snap-type:none;will-change:transform;padding-inline:max(1rem,(100vw - 75rem)/2)}
+  .colors-pin.js-pin .hint{display:none}
+}
+
+/* ===== Catálogo ===== */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.filters button{border:1.5px solid var(--line);background:#fff;color:var(--ink);padding:.55em 1.1em;border-radius:999px;font-size:.88rem;transition:background .25s,color .25s,border-color .25s}
+.filters button[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr));gap:1.25rem}
+.card{background:#fff;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .4s,box-shadow .4s}
+.card:hover{transform:translateY(-.3rem);box-shadow:0 1.5rem 2.5rem -1.8rem rgba(35,28,92,.6)}
+.card[hidden]{display:none}
+.card figure{position:relative;aspect-ratio:1;overflow:hidden;background:var(--mist)}
+.card figure img{width:100%;height:100%;object-fit:cover;transition:scale .6s}
+.card:hover figure img{scale:1.06}
+.tag{position:absolute;top:.75rem;left:.75rem;background:rgba(255,255,255,.92);color:var(--deep);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35em .75em;border-radius:999px}
+.card-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.card-body small{color:var(--muted);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.card-body h3{font-size:1.25rem}
+.card-body p{font-size:.88rem;color:var(--muted);flex:1}
+.card-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.6rem}
+.price{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--deep)}
+.price span{font-family:var(--sans);font-size:.75rem;color:var(--muted);font-weight:400;margin-left:.2em}
+.add{border:0;background:var(--mist);color:var(--deep);padding:.6em 1em;border-radius:999px;font-size:.85rem;font-weight:500;transition:background .25s,color .25s}
+.add:hover{background:var(--deep);color:var(--cream)}
+.add.added{background:var(--wa);color:#fff}
+
+/* ===== Combos ===== */
+.combos{background:var(--deep);color:var(--cream)}
+.combos .eyebrow{color:var(--pink)}
+.combos .sec-head p{color:rgba(251,250,255,.7)}
+.combo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1.25rem}
+.combo{border:1px solid rgba(251,250,255,.18);border-radius:var(--radius);padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:1rem;background:rgba(255,255,255,.03)}
+.combo.featured{background:var(--cream);color:var(--ink);border-color:transparent}
+.combo h3{font-size:1.7rem}
+.combo ul{list-style:none;display:grid;gap:.45rem;font-size:.92rem;flex:1}
+.combo li{display:flex;gap:.6em}
+.combo li::before{content:"✦";color:var(--pink)}
+.combo .price{color:inherit;font-size:2.4rem}
+.combo .price s{font-size:1rem;opacity:.55;font-weight:400;margin-left:.4em}
+.combo .ribbon{align-self:flex-start;background:var(--grad);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35em .8em;border-radius:999px}
+
+/* ===== Resultados ===== */
+.results-grid{display:grid;gap:1.25rem}
+.results-grid figure{border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:4/5}
+.results-grid img{width:100%;height:100%;object-fit:cover}
+.results-grid figcaption{position:absolute;left:1rem;bottom:1rem;right:1rem;background:rgba(251,250,255,.92);border-radius:.9rem;padding:.7rem 1rem;font-size:.85rem}
+.results-grid figcaption b{font-family:var(--serif);font-size:1.05rem;display:block}
+.results-copy{display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.results-copy p{color:var(--muted)}
+@media (min-width:56.25em){.results-grid{grid-template-columns:1fr 1fr 1fr}.results-copy{padding-left:1rem}}
+@media (min-width:37.5em) and (max-width:56.24em){.results-grid{grid-template-columns:1fr 1fr}.results-copy{grid-column:1/-1}}
+
+/* ===== Cómo comprar ===== */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1.25rem;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-style:italic;font-size:2.4rem;color:var(--pink);display:block;line-height:1;margin-bottom:.8rem}
+.step h3{font-size:1.25rem;margin-bottom:.4rem}
+.step p{font-size:.92rem;color:var(--muted)}
+.pay{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.pay span{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.45em 1em;font-size:.85rem}
+
+/* ===== Testimonios ===== */
+.testi{background:var(--mist)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1.25rem}
+.quote{background:#fff;border-radius:var(--radius);padding:1.8rem;display:flex;flex-direction:column;gap:1rem}
+.quote .stars{color:var(--pink);letter-spacing:.15em}
+.quote p{font-family:var(--serif);font-size:1.12rem;line-height:1.45;flex:1}
+.quote footer{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--muted)}
+.quote footer b{color:var(--ink);display:block;font-size:.95rem}
+.avatar{width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;font-weight:700;flex:none}
+.demo-note{margin-top:1.5rem;font-size:.78rem;color:var(--muted);text-align:center}
+
+/* ===== CTA / contacto ===== */
+.cta{text-align:center}
+.cta h2{max-width:48rem;margin:0 auto 1.2rem;color:var(--deep)}
+.cta p{max-width:34rem;margin:0 auto 2rem;color:var(--muted)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:1rem;margin-top:3.5rem;text-align:left}
+.info div{border-top:1.5px solid var(--deep);padding-top:1rem}
+.info b{display:block;font-family:var(--serif);font-size:1.1rem;margin-bottom:.3rem}
+.info span{font-size:.92rem;color:var(--muted)}
+
+footer.site{background:var(--ink);color:rgba(251,250,255,.7);padding-block:2.5rem 6.5rem;font-size:.85rem}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+@media (min-width:37.5em){footer.site{padding-bottom:2.5rem}}
+
+/* ===== Botón flotante de pedido ===== */
+.fab{position:fixed;right:1rem;bottom:1rem;z-index:60;display:flex;align-items:center;gap:.6rem;background:var(--wa);color:#fff;text-decoration:none;border-radius:999px;padding:.85rem 1.2rem;font-weight:500;box-shadow:0 1rem 2rem -1rem rgba(0,0,0,.5);transition:transform .3s}
+.fab:hover{transform:scale(1.04)}
+.fab svg{width:1.5rem;height:1.5rem}
+.fab .count{background:#fff;color:var(--wa);border-radius:999px;min-width:1.5rem;height:1.5rem;display:none;place-items:center;font-size:.8rem;font-weight:700;padding-inline:.35rem}
+.fab.has .count{display:grid}
+.fab .label{display:none}
+.fab.has .label{display:inline}
+@media (min-width:37.5em){.fab .label{display:inline}}
+
+/* ===== Reveal on scroll ===== */
+.reveal{opacity:0;transform:translateY(2rem);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .line span{transform:none}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+@media (min-width:75em){.grid{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+
+<header id="top-bar">
+  <nav class="wrap nav" aria-label="Principal">
+    <a href="#inicio" class="logo">
+      <img src="assets/logo-xafiro.png" alt="Xafiro Nails" width="913" height="444">
+    </a>
+    <ul>
+      <li><a href="#colores">Colores</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#combos">Combos</a></li>
+      <li><a href="#comprar">Cómo comprar</a></li>
+    </ul>
+    <a class="btn btn-wa js-wa" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" data-msg="¡Hola Xafiro Nails! Quiero información sobre sus insumos.">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4ZM12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+      <span>Escríbenos</span>
+    </a>
+  </nav>
+</header>
+
+<main>
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Insumos de uñas · Hecho para Venezuela</p>
+      <h1>
+        <span class="line"><span>Todo para</span></span>
+        <span class="line"><span>tu manicura,</span></span>
+        <span class="line"><span><em>en un solo lugar</em></span></span>
+      </h1>
+      <p class="lead">Gel polish, polygel, builder, tips y herramientas profesionales. Precios en dólares, pago móvil y envíos a todo el país en 24–72 h.</p>
+      <div class="btns">
+        <a class="btn btn-wa js-wa" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" data-msg="¡Hola Xafiro Nails! Quiero hacer un pedido.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+          Pedir por WhatsApp
+        </a>
+        <a class="btn btn-line" href="#catalogo" style="color:var(--deep)">Ver catálogo</a>
+      </div>
+      <div class="hero-badges">
+        <span>Envíos por MRW, Zoom y Tealca</span>
+        <span>Delivery en Caracas</span>
+        <span>Mayor y detal</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="main"><img id="hero-img" src="assets/manicura-roja.jpg" alt="Manicura almendrada con french rojo brillante" width="864" height="1152" fetchpriority="high"></div>
+      <div class="chip c1"><img src="assets/nude-rosa.jpg" alt=""><div><b>Nude Rosa</b>Gel 15 ml</div></div>
+      <div class="chip c2"><img src="assets/polygel.jpg" alt=""><div><b>Poly Gel</b>HEMA/TPO free</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Gel polish</span><span>Poly gel</span><span>Builder 6 en 1</span><span>Soft gel tips</span><span>Top 3D finish</span><span>Pinceles</span><span>Envíos a toda Venezuela</span>
+    <span>Gel polish</span><span>Poly gel</span><span>Builder 6 en 1</span><span>Soft gel tips</span><span>Top 3D finish</span><span>Pinceles</span><span>Envíos a toda Venezuela</span>
+  </div>
+</div>
+
+<!-- ===== COLORES ===== -->
+<section class="colors" id="colores">
+  <div class="colors-pin js-pin" id="colors-pin">
+    <div class="colors-sticky">
+      <div class="wrap sec-head reveal">
+        <div>
+          <p class="eyebrow">Carta de colores</p>
+          <h2>Del nude al <em>tricolor</em></h2>
+        </div>
+        <p>Cada tono viene con su muestra real en tip. Lo que ves es lo que te llega.</p>
+      </div>
+      <div class="colors-track" id="colors-track">
+        <article class="swatch"><img src="assets/nude-canela.jpg" alt="Gel Monbray Nude tono canela con muestra en tip" loading="lazy"><div><b>Nude Canela</b><i style="background:#d9a184"></i></div></article>
+        <article class="swatch"><img src="assets/nude-rosa.jpg" alt="Gel Monbray Nude tono rosa con muestra en tip" loading="lazy"><div><b>Nude Rosa</b><i style="background:#e98f9b"></i></div></article>
+        <article class="swatch"><img src="assets/nude-caramelo.jpg" alt="Gel Monbray Nude tono caramelo con muestra en tip" loading="lazy"><div><b>Nude Caramelo</b><i style="background:#c98a6c"></i></div></article>
+        <article class="swatch"><img src="assets/gel-amarillo.jpg" alt="Gel polish Tiffany amarillo" loading="lazy"><div><b>Amarillo Araguaney</b><i style="background:#f2d21b"></i></div></article>
+        <article class="swatch"><img src="assets/gel-azul.jpg" alt="Gel polish Tiffany azul" loading="lazy"><div><b>Azul Caribe</b><i style="background:#1f6fd6"></i></div></article>
+        <article class="swatch"><img src="assets/gel-frambuesa.jpg" alt="Gel polish Tiffany rojo frambuesa" loading="lazy"><div><b>Rojo Frambuesa</b><i style="background:#d8264a"></i></div></article>
+        <article class="swatch"><img src="assets/gel-cobre.jpg" alt="Gel polish Tiffany cobre" loading="lazy"><div><b>Cobre Cacao</b><i style="background:#a5532c"></i></div></article>
+        <article class="swatch"><img src="assets/gel-beige.jpg" alt="Gel polish Tiffany beige" loading="lazy"><div><b>Beige Arena</b><i style="background:#e2b79a"></i></div></article>
+        <article class="swatch"><img src="assets/gel-negro.jpg" alt="Gel polish Tiffany negro" loading="lazy"><div><b>Negro Ávila</b><i style="background:#141019"></i></div></article>
+      </div>
+      <p class="hint">Desliza para ver más tonos →</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATÁLOGO ===== -->
+<section id="catalogo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">Catálogo demo</p>
+        <h2>Arma tu <em>pedido</em></h2>
+      </div>
+      <p>Toca «Agregar» en lo que quieras y envía la lista completa por WhatsApp con un solo botón.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrar catálogo">
+      <button type="button" data-f="todo" aria-pressed="true">Todo</button>
+      <button type="button" data-f="color" aria-pressed="false">Gel de color</button>
+      <button type="button" data-f="base" aria-pressed="false">Bases y top</button>
+      <button type="button" data-f="cons" aria-pressed="false">Construcción</button>
+      <button type="button" data-f="herr" aria-pressed="false">Herramientas</button>
+    </div>
+
+    <div class="grid" id="grid">
+      <article class="card reveal" data-cat="color">
+        <figure><img src="assets/nude-rosa.jpg" alt="Gel Monbray Nude rosa" loading="lazy"><span class="tag">Más vendido</span></figure>
+        <div class="card-body"><small>Monbray · 15 ml</small><h3>Gel Nude Monbray</h3><p>Fórmula HEMA free, soak-off UV/LED. Tonos canela, rosa y caramelo.</p>
+          <div class="card-foot"><span class="price">$7<span>c/u</span></span><button class="add" type="button" data-name="Gel Nude Monbray 15 ml" data-price="7">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="color">
+        <figure><img src="assets/gel-frambuesa.jpg" alt="Gel polish Tiffany rojo frambuesa" loading="lazy"></figure>
+        <div class="card-body"><small>Tiffany · 10 ml</small><h3>Gel Polish Tiffany</h3><p>Colores sólidos de alta pigmentación. Cubre en dos capas.</p>
+          <div class="card-foot"><span class="price">$4,5<span>c/u</span></span><button class="add" type="button" data-name="Gel Polish Tiffany 10 ml" data-price="4.5">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="base">
+        <figure><img src="assets/builder-6en1.jpg" alt="Tiffany Jelly Glue Builder Base 6 en 1" loading="lazy"><span class="tag">6 en 1</span></figure>
+        <div class="card-body"><small>Tiffany · 10 ml</small><h3>Builder Base 6 en 1</h3><p>Jelly glue, base niveladora rusa y refuerzo en un solo frasco.</p>
+          <div class="card-foot"><span class="price">$9</span><button class="add" type="button" data-name="Builder Base 6 en 1 Tiffany" data-price="9">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="base">
+        <figure><img src="assets/top-3d-finish.jpg" alt="Tiffany 3D Finish top coat" loading="lazy"></figure>
+        <div class="card-body"><small>Tiffany · Paso 3</small><h3>Top 3D Finish</h3><p>Brillo espejo de larga duración que no se opaca ni amarillea.</p>
+          <div class="card-foot"><span class="price">$6</span><button class="add" type="button" data-name="Top 3D Finish Tiffany" data-price="6">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="cons">
+        <figure><img src="assets/polygel.jpg" alt="Monbray Poly Gel premium 30 g" loading="lazy"><span class="tag">HEMA free</span></figure>
+        <div class="card-body"><small>Monbray · 30 g</small><h3>Poly Gel Premium</h3><p>Ideal para extensiones resistentes y livianas. Blanco y tonos nude.</p>
+          <div class="card-foot"><span class="price">$8</span><button class="add" type="button" data-name="Poly Gel Monbray 30 g" data-price="8">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="cons">
+        <figure><img src="assets/soft-gel-tips.jpg" alt="Caja de Soft Gel Tips Tiffany 240 piezas" loading="lazy"></figure>
+        <div class="card-body"><small>Tiffany · 240 pzs</small><h3>Soft Gel Tips</h3><p>Tips de gel suave en varias tallas. Extensión rápida en minutos.</p>
+          <div class="card-foot"><span class="price">$10</span><button class="add" type="button" data-name="Soft Gel Tips 240 pzs" data-price="10">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="herr">
+        <figure><img src="assets/pincel-monbray.jpg" alt="Pincel profesional para uñas Monbray" loading="lazy"></figure>
+        <div class="card-body"><small>Monbray</small><h3>Pincel Profesional</h3><p>Punta de precisión para gel y polygel, con capuchón protector.</p>
+          <div class="card-foot"><span class="price">$5</span><button class="add" type="button" data-name="Pincel Profesional Monbray" data-price="5">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="herr">
+        <figure><img src="assets/herramienta-acero.jpg" alt="Herramienta metálica Monbray en empaque rosado" loading="lazy"></figure>
+        <div class="card-body"><small>Monbray · Acero</small><h3>Herramienta de Acero</h3><p>Acabado metálico, ligera y fácil de limpiar. Para uso diario en cabina.</p>
+          <div class="card-foot"><span class="price">$4</span><button class="add" type="button" data-name="Herramienta de Acero Monbray" data-price="4">Agregar</button></div></div>
+      </article>
+      <article class="card reveal" data-cat="herr">
+        <figure><img src="assets/kit-esponjas.jpg" alt="Bolsa con esponjas y pinza metálica Monbray" loading="lazy"></figure>
+        <div class="card-body"><small>Monbray</small><h3>Kit Esponjas + Pinza</h3><p>Para degradados, efecto baby boomer y aplicar pigmentos sin manchar.</p>
+          <div class="card-foot"><span class="price">$3,5</span><button class="add" type="button" data-name="Kit Esponjas + Pinza" data-price="3.5">Agregar</button></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMBOS ===== -->
+<section class="combos" id="combos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">Combos</p>
+        <h2>Empieza con <em>todo listo</em></h2>
+      </div>
+      <p>Pensados para quien arranca su emprendimiento de uñas o quiere reponer su cabina.</p>
+    </div>
+    <div class="combo-grid">
+      <article class="combo reveal">
+        <h3>Kit Inicio</h3>
+        <ul><li>Builder Base 6 en 1</li><li>Top 3D Finish</li><li>3 Gel Polish Tiffany a elegir</li><li>Pincel profesional</li></ul>
+        <span class="price">$30<s>$33,5</s></span>
+        <a class="btn btn-line js-wa" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" data-msg="¡Hola! Me interesa el Kit Inicio ($30).">Lo quiero</a>
+      </article>
+      <article class="combo featured reveal">
+        <span class="ribbon">Favorito</span>
+        <h3>Kit Extensiones</h3>
+        <ul><li>Poly Gel Premium 30 g</li><li>Soft Gel Tips 240 pzs</li><li>Builder Base 6 en 1</li><li>Top 3D Finish</li><li>Pincel profesional</li></ul>
+        <span class="price">$34<s>$38</s></span>
+        <a class="btn btn-wa js-wa" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" data-msg="¡Hola! Me interesa el Kit Extensiones ($34).">Lo quiero</a>
+      </article>
+      <article class="combo reveal">
+        <h3>Trío Nude</h3>
+        <ul><li>Nude Canela</li><li>Nude Rosa</li><li>Nude Caramelo</li><li>Muestras en tip incluidas</li></ul>
+        <span class="price">$18<s>$21</s></span>
+        <a class="btn btn-line js-wa" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" data-msg="¡Hola! Me interesa el Trío Nude ($18).">Lo quiero</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTADOS ===== -->
+<section id="resultados">
+  <div class="wrap results-grid">
+    <figure class="reveal"><img src="assets/manicura-vino.jpg" alt="Uñas almendradas con base perlada rosa y french vinotinto" loading="lazy"><figcaption><b>French Vinotinto</b>Base perlada + gel de color</figcaption></figure>
+    <figure class="reveal"><img src="assets/manicura-roja.jpg" alt="Uñas stiletto con french rojo glitter" loading="lazy"><figcaption><b>French Rojo Pasión</b>Builder + Nude + rojo</figcaption></figure>
+    <div class="results-copy reveal">
+      <p class="eyebrow">Hecho con nuestros insumos</p>
+      <h2>Resultados de <em>salón</em></h2>
+      <p>Diseños realizados con builder, geles nude y colores de nuestro catálogo. Duran semanas sin levantarse ni perder el brillo.</p>
+      <div><a class="btn btn-deep" href="#catalogo">Quiero estos productos</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CÓMO COMPRAR ===== -->
+<section id="comprar" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">Cómo comprar</p>
+        <h2>Fácil, rápido y <em>seguro</em></h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Elige</h3><p>Agrega productos al pedido desde el catálogo o pregúntanos por tonos disponibles.</p></div>
+      <div class="step reveal"><h3>Escríbenos</h3><p>Envía tu lista por WhatsApp. Te confirmamos stock y el total en $ o Bs. a tasa BCV.</p></div>
+      <div class="step reveal"><h3>Paga</h3><p>Pago móvil, transferencia, Zelle, Binance o efectivo en divisas.</p></div>
+      <div class="step reveal"><h3>Recibe</h3><p>Delivery en Caracas o envío nacional por MRW, Zoom o Tealca en 24–72 h.</p></div>
+    </div>
+    <div class="pay reveal"><span>Pago móvil</span><span>Transferencia</span><span>Zelle</span><span>Binance</span><span>Efectivo $</span></div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIOS (ficticios) ===== -->
+<section class="testi" id="testimonios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">Lo que dicen</p>
+        <h2>Manicuristas <em>felices</em></h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <blockquote class="quote reveal"><div class="stars" aria-label="5 de 5">★★★★★</div><p>«El builder 6 en 1 me cambió la vida. Mis clientas duran tres semanas sin levantamiento. Me llegó a Maracaibo en dos días por MRW.»</p><footer><span class="avatar">YG</span><div><b>Yuliana G.</b>Manicurista · Maracaibo</div></footer></blockquote>
+      <blockquote class="quote reveal"><div class="stars" aria-label="5 de 5">★★★★★</div><p>«Pagué por pago móvil y en la tarde ya tenía el delivery en Los Palos Grandes. El nude rosa es divino, igualito a la foto.»</p><footer><span class="avatar">MC</span><div><b>María Cristina R.</b>Clienta · Caracas</div></footer></blockquote>
+      <blockquote class="quote reveal"><div class="stars" aria-label="5 de 5">★★★★★</div><p>«Arranqué mi emprendimiento con el Kit Extensiones. El polygel es fácil de trabajar y rinde muchísimo. ¡Súper recomendado, chama!»</p><footer><span class="avatar">DA</span><div><b>Daniela A.</b>Nail artist · Valencia</div></footer></blockquote>
+    </div>
+    <p class="demo-note">Testimonios y precios de demostración.</p>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta" id="contacto">
+  <div class="wrap">
+    <p class="eyebrow reveal">¿Lista para pedir?</p>
+    <h2 class="reveal">Tu próxima manicura empieza con un <em>mensaje</em></h2>
+    <p class="reveal">Respondemos rápido, te asesoramos con los tonos y armamos tu pedido al momento.</p>
+    <a class="btn btn-wa js-wa reveal" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" data-msg="¡Hola Xafiro Nails! Quiero hacer un pedido.">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+      0412-861-4785
+    </a>
+    <div class="info">
+      <div class="reveal"><b>Ubicación</b><span>Caracas, Venezuela · Entregas con cita</span></div>
+      <div class="reveal"><b>Horario</b><span>Lun a Sáb · 9:00 a. m. – 6:00 p. m.</span></div>
+      <div class="reveal"><b>Envíos</b><span>MRW · Zoom · Tealca · Delivery Caracas</span></div>
+      <div class="reveal"><b>Ventas</b><span>Al detal y al mayor</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Xafiro Nails · Insumos de uñas en Venezuela</span>
+    <span>Monbray y Tiffany son marcas de sus respectivos fabricantes.</span>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="https://wa.me/584128614785" target="_blank" rel="noopener noreferrer" aria-label="Enviar pedido por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4ZM12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+  <span class="label">Enviar pedido</span>
+  <span class="count" id="fab-count">0</span>
+</a>
+
+<script>
+(() => {
+  // Número en formato internacional (58 = Venezuela, sin el 0 inicial)
+  const WA = 'https://wa.me/584128614785';
+  const waLink = msg => WA + '?text=' + encodeURIComponent(msg);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mensajes prellenados en cada botón de WhatsApp
+  document.querySelectorAll('.js-wa').forEach(a => { if (a.dataset.msg) a.href = waLink(a.dataset.msg); });
+
+  // Header sólido al hacer scroll
+  const bar = document.getElementById('top-bar');
+  const onScrollBar = () => bar.classList.toggle('solid', scrollY > 40);
+
+  // Parallax suave en la foto del hero
+  const heroImg = document.getElementById('hero-img');
+  const onScrollHero = () => {
+    if (reduce || scrollY > innerHeight) return;
+    heroImg.style.transform = `translateY(${scrollY * 0.08}px)`;
+  };
+
+  // Carrusel de colores: en escritorio avanza horizontalmente con el scroll
+  const pin = document.getElementById('colors-pin');
+  const track = document.getElementById('colors-track');
+  const desk = matchMedia('(min-width: 56.25em)');
+  const onScrollColors = () => {
+    if (reduce || !desk.matches) { track.style.transform = ''; return; }
+    const r = pin.getBoundingClientRect();
+    const total = pin.offsetHeight - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    const max = track.scrollWidth - document.documentElement.clientWidth;
+    track.style.transform = `translateX(${-p * Math.max(0, max)}px)`;
+  };
+
+  let ticking = false;
+  addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { onScrollBar(); onScrollHero(); onScrollColors(); ticking = false; });
+  }, { passive: true });
+  addEventListener('resize', onScrollColors);
+  onScrollBar(); onScrollColors();
+
+  // Aparición al entrar en pantalla
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Filtros del catálogo
+  const btns = document.querySelectorAll('.filters button');
+  const cards = document.querySelectorAll('#grid .card');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    cards.forEach(c => {
+      c.hidden = b.dataset.f !== 'todo' && c.dataset.cat !== b.dataset.f;
+      if (!c.hidden) c.classList.add('in');
+    });
+  }));
+
+  // Pedido: agrega productos y genera el mensaje de WhatsApp
+  const cart = new Map();
+  const fab = document.getElementById('fab');
+  const count = document.getElementById('fab-count');
+  const fmt = n => '$' + n.toFixed(2).replace('.', ',').replace(',00', '');
+  const updateFab = () => {
+    let items = 0, total = 0, lines = [];
+    cart.forEach((q, name) => {
+      const price = +document.querySelector(`.add[data-name="${name}"]`).dataset.price;
+      items += q; total += q * price;
+      lines.push(`• ${q} x ${name} (${fmt(price)})`);
+    });
+    count.textContent = items;
+    fab.classList.toggle('has', items > 0);
+    fab.href = items
+      ? waLink(`¡Hola Xafiro Nails! Quiero hacer este pedido:\n${lines.join('\n')}\nTotal aprox: ${fmt(total)}`)
+      : waLink('¡Hola Xafiro Nails! Quiero información sobre sus insumos.');
+  };
+  document.querySelectorAll('.add').forEach(b => b.addEventListener('click', () => {
+    cart.set(b.dataset.name, (cart.get(b.dataset.name) || 0) + 1);
+    b.classList.add('added');
+    b.textContent = `Agregado (${cart.get(b.dataset.name)})`;
+    updateFab();
+  }));
+  updateFab();
+})();
+</script>
+</body>
+</html>
