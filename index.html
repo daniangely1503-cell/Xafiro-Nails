@@ -134,6 +134,38 @@ header.solid{background:rgba(251,250,255,.9);backdrop-filter:blur(12px);-webkit-
 .add:hover{background:var(--deep);color:var(--cream)}
 .add.added{background:var(--wa);color:#fff}
 
+/* ===== Catálogo dinámico (Google Sheets) ===== */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.stock{background:var(--mist)}
+.stock-tools{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}
+.stock-tools .field{flex:1 1 11rem;min-width:0;position:relative}
+.stock-tools .field-search{flex:1 1 100%}
+.stock-tools input,.stock-tools select{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:.7em 1.1em;outline:none;transition:border-color .25s,box-shadow .25s;-webkit-appearance:none;appearance:none}
+.stock-tools input{padding-left:2.6em}
+.stock-tools select{padding-right:2.4em;background-image:linear-gradient(45deg,transparent 50%,var(--violet) 50%),linear-gradient(135deg,var(--violet) 50%,transparent 50%);background-position:calc(100% - 1.25em) 55%,calc(100% - .9em) 55%;background-size:.35em .35em;background-repeat:no-repeat;text-overflow:ellipsis}
+.stock-tools input:focus,.stock-tools select:focus{border-color:var(--violet);box-shadow:0 0 0 .2rem rgba(106,79,216,.15)}
+.stock-tools .field-search svg{position:absolute;left:1em;top:50%;translate:0 -50%;width:1.1em;height:1.1em;color:var(--muted);pointer-events:none}
+.btn-clear{flex:0 0 auto;border:1.5px solid var(--deep);background:transparent;color:var(--deep);border-radius:999px;padding:.7em 1.3em;font-size:.92rem;font-weight:500;transition:background .25s,color .25s}
+.btn-clear:hover{background:var(--deep);color:var(--cream)}
+@media (min-width:56.25em){.stock-tools .field-search{flex:2 1 18rem}}
+.stock-count{font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;min-height:1.4em}
+.stock .card-body .meta{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.2rem}
+.stock .card-body .meta span{font-size:.75rem;background:var(--mist);color:var(--deep);border-radius:999px;padding:.2em .7em}
+.stock .btn-wa{padding:.6em 1em;font-size:.85rem}
+.noimg{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:.3rem;background:var(--grad);color:#fff;text-align:center;padding:1rem}
+.noimg b{font-family:var(--serif);font-size:clamp(2.5rem,8vw,3.5rem);line-height:1;font-weight:600}
+.noimg small{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+.card.skel{pointer-events:none}
+.skel figure,.skel .ln{background:linear-gradient(90deg,var(--mist) 0%,#fff 50%,var(--mist) 100%);background-size:200% 100%;animation:shimmer 1.3s linear infinite}
+.skel .ln{height:.9rem;border-radius:999px}
+.skel .ln.w1{width:40%}.skel .ln.w2{width:80%;height:1.3rem}.skel .ln.w3{width:55%}
+@keyframes shimmer{to{background-position:-200% 0}}
+.stock-state{text-align:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:clamp(2rem,5vw,3rem) 1.5rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.stock-state[hidden]{display:none}
+.stock-state h3{font-size:1.5rem;color:var(--deep)}
+.stock-state p{color:var(--muted);max-width:30rem}
+.stock-state .btns{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+
 /* ===== Combos ===== */
 .combos{background:var(--deep);color:var(--cream)}
 .combos .eyebrow{color:var(--pink)}
@@ -225,6 +257,7 @@ footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
     <ul>
       <li><a href="#colores">Colores</a></li>
       <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#disponibles">Disponibles</a></li>
       <li><a href="#combos">Combos</a></li>
       <li><a href="#comprar">Cómo comprar</a></li>
     </ul>
@@ -367,6 +400,35 @@ footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
           <div class="card-foot"><span class="price">$3,5</span><button class="add" type="button" data-name="Kit Esponjas + Pinza" data-price="3.5">Agregar</button></div></div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ===== CATÁLOGO DINÁMICO (Google Sheets CSV) ===== -->
+<section class="stock" id="disponibles" aria-labelledby="stock-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">Inventario actualizado</p>
+        <h2 id="stock-title">Disponible <em>hoy</em></h2>
+      </div>
+      <p>Productos con existencia, cargados directo de nuestro inventario. Busca, filtra y pídelo por WhatsApp en un toque.</p>
+    </div>
+
+    <form class="stock-tools" id="st-tools" role="search" aria-label="Buscar y filtrar productos disponibles">
+      <label class="field field-search">
+        <span class="sr-only">Buscar producto</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="st-q" placeholder="Buscar por nombre, marca o color…" autocomplete="off" enterkeyhint="search">
+      </label>
+      <label class="field"><span class="sr-only">Categoría</span><select id="st-cat"><option value="">Todas las categorías</option></select></label>
+      <label class="field"><span class="sr-only">Marca</span><select id="st-marca"><option value="">Todas las marcas</option></select></label>
+      <label class="field"><span class="sr-only">Color</span><select id="st-color"><option value="">Todos los colores</option></select></label>
+      <button type="button" class="btn-clear" id="st-clear">Limpiar</button>
+    </form>
+
+    <p class="stock-count" id="st-count" aria-live="polite"></p>
+    <div class="grid" id="st-grid" aria-busy="true"></div>
+    <div class="stock-state" id="st-state" role="status" hidden></div>
   </div>
 </section>
 
@@ -576,6 +638,225 @@ footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
     updateFab();
   }));
   updateFab();
+})();
+</script>
+
+<script>
+/* ===== Catálogo dinámico desde Google Sheets (CSV publicado) =====
+   Columnas: id, nombre, categoria, marca, color, precio, disponible, imagen
+   - Solo se muestran filas con disponible = "si"
+   - imagen: nombre de archivo (se busca en assets/img/ y luego en assets/), ruta relativa o URL */
+(() => {
+  const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTn-tux47_TDkwhB-zCGKdjFiInxHQIqkxaxEX0Mi0mJn0xf4u659fIXaoEv5U8x0G_eLksA3k90pKa/pub?gid=0&single=true&output=csv';
+  const WA = 'https://wa.me/584128614785';
+  const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>';
+
+  const $ = id => document.getElementById(id);
+  const grid = $('st-grid'), state = $('st-state'), countEl = $('st-count');
+  const q = $('st-q'), selCat = $('st-cat'), selMarca = $('st-marca'), selColor = $('st-color');
+  let items = [];
+
+  const norm = s => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+
+  // Parser CSV con soporte de comillas, comas y saltos de línea dentro de celdas
+  const parseCSV = text => {
+    const rows = []; let row = [], f = '', inQ = false;
+    text = text.replace(/^﻿/, '');
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (inQ) {
+        if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else inQ = false; }
+        else f += c;
+      } else if (c === '"') inQ = true;
+      else if (c === ',') { row.push(f); f = ''; }
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i + 1] === '\n') i++;
+        row.push(f); rows.push(row); row = []; f = '';
+      } else f += c;
+    }
+    if (f || row.length) { row.push(f); rows.push(row); }
+    return rows.filter(r => r.some(x => x.trim()));
+  };
+
+  // "7", "7,5", "$7.50", "1.234,50" → número
+  const parsePrice = v => {
+    let s = String(v ?? '').replace(/[^\d.,-]/g, '');
+    if (!s) return null;
+    if (s.includes(',') && s.includes('.')) {
+      s = s.lastIndexOf(',') > s.lastIndexOf('.') ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
+    } else s = s.replace(',', '.');
+    const n = parseFloat(s);
+    return Number.isFinite(n) ? n : null;
+  };
+  const money = n => '$' + n.toFixed(2);
+
+  // Rutas candidatas para la imagen (se prueban en orden hasta que una cargue)
+  const imgCandidates = v => {
+    v = String(v ?? '').trim();
+    if (!v) return [];
+    const drive = v.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/);
+    if (drive) return ['https://drive.google.com/thumbnail?id=' + drive[1] + '&sz=w800'];
+    if (/^(https?:)?\/\//i.test(v)) return [v];
+    // "./img/x.jpeg", "img/x.jpeg", "assets/img/x.jpeg" o "x.jpeg" → se prueba primero dentro de assets/
+    const clean = v.replace(/^\.?\//, '');
+    const file = clean.split('/').pop();
+    const list = clean.startsWith('assets/')
+      ? [clean, 'assets/img/' + file, 'assets/' + file]
+      : ['assets/' + clean, 'assets/img/' + file, 'assets/' + file, clean];
+    return [...new Set(list.map(p => p.split('/').map(encodeURIComponent).join('/')))];
+  };
+
+  const placeholder = name => {
+    const d = el('div', 'noimg');
+    d.setAttribute('aria-hidden', 'true');
+    d.append(el('b', '', (name || 'X').trim().charAt(0).toUpperCase()), el('small', '', 'Foto próximamente'));
+    return d;
+  };
+
+  const waMsg = it => {
+    const det = [it.marca, it.color].filter(Boolean).join(' · ');
+    return `¡Hola Xafiro Nails! Me interesa este producto:\n• ${it.nombre}${det ? ' (' + det + ')' : ''}` +
+      (it.precio != null ? `\nPrecio: ${money(it.precio)}` : '') +
+      (it.id ? `\nRef: ${it.id}` : '') + '\n¿Está disponible?';
+  };
+
+  const card = it => {
+    const art = el('article', 'card');
+    const fig = el('figure');
+    const srcs = imgCandidates(it.imagen);
+    if (srcs.length) {
+      const img = new Image();
+      img.loading = 'lazy'; img.decoding = 'async';
+      img.alt = [it.nombre, it.marca, it.color].filter(Boolean).join(' · ');
+      let k = 0;
+      img.onerror = () => { k++; if (k < srcs.length) img.src = srcs[k]; else img.replaceWith(placeholder(it.nombre)); };
+      img.src = srcs[0];
+      fig.append(img);
+    } else fig.append(placeholder(it.nombre));
+    if (it.categoria) fig.append(el('span', 'tag', it.categoria));
+
+    const body = el('div', 'card-body');
+    if (it.marca) body.append(el('small', '', it.marca));
+    body.append(el('h3', '', it.nombre));
+    const meta = el('div', 'meta');
+    if (it.color) meta.append(el('span', '', 'Color: ' + it.color));
+    if (it.id) meta.append(el('span', '', 'Ref. ' + it.id));
+    if (meta.childNodes.length) body.append(meta);
+
+    const foot = el('div', 'card-foot');
+    foot.append(el('span', 'price', it.precio != null ? money(it.precio) : 'Consultar'));
+    const a = el('a', 'btn btn-wa');
+    a.href = WA + '?text=' + encodeURIComponent(waMsg(it));
+    a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', 'Pedir ' + it.nombre + ' por WhatsApp');
+    a.innerHTML = WA_ICON;
+    a.append(document.createTextNode('Pedir'));
+    foot.append(a);
+    body.append(foot);
+    art.append(fig, body);
+    return art;
+  };
+
+  const showState = (title, text, actions = []) => {
+    state.replaceChildren(el('h3', '', title), el('p', '', text));
+    if (actions.length) { const b = el('div', 'btns'); b.append(...actions); state.append(b); }
+    state.hidden = false;
+  };
+
+  const skeleton = (n = 8) => {
+    grid.replaceChildren(...Array.from({ length: n }, () => {
+      const c = el('div', 'card skel'); c.setAttribute('aria-hidden', 'true');
+      const b = el('div', 'card-body');
+      b.append(el('div', 'ln w1'), el('div', 'ln w2'), el('div', 'ln w3'));
+      c.append(el('figure'), b);
+      return c;
+    }));
+  };
+
+  const fillSelect = (sel, key, label) => {
+    const vals = [...new Map(items.filter(i => i[key]).map(i => [norm(i[key]), i[key]])).entries()]
+      .sort((a, b) => a[1].localeCompare(b[1], 'es'));
+    sel.replaceChildren(new Option(label, ''), ...vals.map(([v, t]) => new Option(t, v)));
+    sel.disabled = vals.length === 0;
+  };
+
+  const render = () => {
+    const term = norm(q.value), c = selCat.value, m = selMarca.value, co = selColor.value;
+    const list = items.filter(i =>
+      (!c || norm(i.categoria) === c) && (!m || norm(i.marca) === m) && (!co || norm(i.color) === co) &&
+      (!term || i._s.includes(term)));
+    grid.replaceChildren(...list.map(card));
+    countEl.textContent = list.length === items.length
+      ? `${items.length} producto${items.length === 1 ? '' : 's'} disponible${items.length === 1 ? '' : 's'}`
+      : `${list.length} de ${items.length} productos`;
+    if (!list.length) {
+      const clear = el('button', 'btn-clear', 'Limpiar filtros'); clear.type = 'button'; clear.onclick = reset;
+      showState('Sin resultados', 'No encontramos productos con esa búsqueda. Prueba con otros filtros o pregúntanos por WhatsApp.', [clear]);
+    } else state.hidden = true;
+  };
+
+  const reset = () => { q.value = ''; selCat.value = selMarca.value = selColor.value = ''; render(); q.focus(); };
+
+  const load = async () => {
+    state.hidden = true; countEl.textContent = 'Cargando productos…';
+    grid.setAttribute('aria-busy', 'true'); skeleton();
+    [q, selCat, selMarca, selColor, $('st-clear')].forEach(x => x.disabled = true);
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 15000);
+    try {
+      const res = await fetch(CSV_URL, { signal: ctrl.signal, cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      if (/^\s*</.test(text)) throw new Error('La respuesta no es un CSV');
+      const rows = parseCSV(text);
+      if (rows.length < 1) throw new Error('CSV vacío');
+      const head = rows[0].map(norm);
+      const col = k => head.indexOf(k);
+      if (col('nombre') < 0) throw new Error('Falta la columna "nombre"');
+      const get = (r, k) => (col(k) >= 0 ? (r[col(k)] || '').trim() : '');
+      items = rows.slice(1)
+        .filter(r => ['si', 's', 'yes', 'true', '1', 'x'].includes(norm(get(r, 'disponible'))) && get(r, 'nombre'))
+        .map(r => {
+          // Primera letra en mayúscula para mostrar; "ninguno", "n/a" o "-" en color se tratan como vacío
+          const cap = s => s ? s.charAt(0).toLocaleUpperCase('es') + s.slice(1) : s;
+          const color = ['ninguno', 'ninguna', 'n/a', 'na', '-', 'sin color'].includes(norm(get(r, 'color'))) ? '' : get(r, 'color');
+          const it = {
+            id: get(r, 'id'), nombre: cap(get(r, 'nombre')), categoria: cap(get(r, 'categoria')), marca: cap(get(r, 'marca')),
+            color: cap(color), precio: parsePrice(get(r, 'precio')), imagen: get(r, 'imagen')
+          };
+          it._s = norm([it.nombre, it.categoria, it.marca, it.color, it.id].join(' '));
+          return it;
+        });
+      fillSelect(selCat, 'categoria', 'Todas las categorías');
+      fillSelect(selMarca, 'marca', 'Todas las marcas');
+      fillSelect(selColor, 'color', 'Todos los colores');
+      q.disabled = $('st-clear').disabled = false;
+      if (!items.length) {
+        grid.replaceChildren(); countEl.textContent = '';
+        const wa = el('a', 'btn btn-wa'); wa.href = WA + '?text=' + encodeURIComponent('¡Hola Xafiro Nails! ¿Qué productos tienen disponibles?');
+        wa.target = '_blank'; wa.rel = 'noopener noreferrer'; wa.innerHTML = WA_ICON; wa.append(document.createTextNode('Preguntar por WhatsApp'));
+        showState('Reponiendo inventario', 'En este momento no hay productos marcados como disponibles. Escríbenos y te contamos qué llega pronto.', [wa]);
+      } else render();
+    } catch (err) {
+      console.error('[Catálogo]', err);
+      grid.replaceChildren(); countEl.textContent = '';
+      const retry = el('button', 'btn btn-deep', 'Reintentar'); retry.type = 'button'; retry.onclick = load;
+      const wa = el('a', 'btn btn-wa'); wa.href = WA + '?text=' + encodeURIComponent('¡Hola Xafiro Nails! Quiero ver el catálogo de productos disponibles.');
+      wa.target = '_blank'; wa.rel = 'noopener noreferrer'; wa.innerHTML = WA_ICON; wa.append(document.createTextNode('Pedir catálogo'));
+      showState('No pudimos cargar el catálogo', location.protocol === 'file:'
+        ? 'Estás abriendo la web como archivo local y el navegador bloquea la lectura del inventario. Ábrela desde la web publicada o un servidor local para ver los productos.'
+        : 'Revisa tu conexión e inténtalo de nuevo, o pídenos el catálogo directamente por WhatsApp.', [retry, wa]);
+    } finally {
+      clearTimeout(t); grid.setAttribute('aria-busy', 'false');
+    }
+  };
+
+  let deb;
+  q.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(render, 160); });
+  [selCat, selMarca, selColor].forEach(s => s.addEventListener('change', render));
+  $('st-clear').addEventListener('click', reset);
+  $('st-tools').addEventListener('submit', e => { e.preventDefault(); render(); });
+  load();
 })();
 </script>
 </body>
